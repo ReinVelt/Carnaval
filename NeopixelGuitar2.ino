@@ -17,11 +17,11 @@
 #endif
 
 #define PIN 6
-#define PIXELSPS 60 //PIXELS PER STRING (3 STRINGS)
+#define PIXELSPS 120 //PIXELS PER STRING (3 STRINGS)
 
 //  The overall fire brightness
 //  (this can affect both color levels and power consumption)
-int brightness = 64;
+int brightness = 128;
 int k = 0;
 // Parameter 1 = number of pixels in strip
 // Parameter 2 = Arduino pin number (most are valid)
@@ -59,7 +59,7 @@ void setup() {
 
 void loop() {
 
-  delay(100); //10 x per seconde
+  delay(1); //10 x per seconde
 
   //loop colorcycle
   for (long firstPixelHue = 0; firstPixelHue < 5 * 65536; firstPixelHue += (256)) {
@@ -71,18 +71,22 @@ void loop() {
       int pixelHue = firstPixelHue + (i * 65536L / (strip.numPixels()));
       strip.setPixelColor(i, strip.gamma32(strip.ColorHSV(pixelHue, 255, 128l)));
 
+
+       
+   
+
       //fretten
-      if (i < 60) {
+      if (i < 120) {
         if (i % 5 == 0) {
           strip.setPixelColor(i, 255, 255, 255); //snaar1
         }
       }
-      if (i > 59 && i < 120) {
+      if (i > 119 && i < 240) {
         if (i % 5 == 4) {
           strip.setPixelColor(i, 255, 255, 255); //snaar2 (omgekeerd...want snaren lopen zigzag)
         }
       }
-      if (i > 119) {
+      if (i > 239) {
         if (i % 5 == 0) {
           strip.setPixelColor(i, 255, 255, 255); //snaar3
         }
@@ -90,19 +94,39 @@ void loop() {
 
     }
 
+    
+
+   int l=l = random(PIXELSPS);;
     //fingerspitzen
-    if (firstPixelHue % 10 == 0) {
-      k = random(PIXELSPS / 2);
-    }
+    
     if (firstPixelHue % 3 == 0)  {
-      strip.setPixelColor(k + 1, 255, 255, 0);  //snaar1
+      strip.setPixelColor(l + 1, random(255), random(255), random(255));  //snaar1
     }
     if (firstPixelHue % 3 == 1)  {
-      strip.setPixelColor((2 * PIXELSPS) - k - 2, 255, 255, 0); //snaar2 (ook weer omgekeerd...want snaren lopen zigzag)
+      strip.setPixelColor((2 * PIXELSPS) - l - 2, random(255), random(255), random(255)); //snaar2 (ook weer omgekeerd...want snaren lopen zigzag)
     }
     if (firstPixelHue % 3 == 2)  {
-      strip.setPixelColor(k + (2 * PIXELSPS) + 1, 255, 255, 0); //snaar3
+      strip.setPixelColor(l + (2 * PIXELSPS) + 1, random(255), random(255), random(255) ); //snaar3
+    } 
+
+
+    //fire
+    k++;
+    l=k%120;;
+    //fingerspitzen
+    
+    if (firstPixelHue % 3 == 0)  {
+      strip.setPixelColor(l + 1, 255, 255, 0);  //snaar1
     }
+    if (firstPixelHue % 3 == 1)  {
+      strip.setPixelColor((2 * PIXELSPS) - l - 2, 255, 255, 0); //snaar2 (ook weer omgekeerd...want snaren lopen zigzag)
+    }
+    if (firstPixelHue % 3 == 2)  {
+      strip.setPixelColor(l + (2 * PIXELSPS) + 1, 255, 255, 0); //snaar3
+    } 
+    
+
+   
     strip.show();
   }
 
