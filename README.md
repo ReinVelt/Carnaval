@@ -37,6 +37,6 @@ Het systeem maakt gebruik van een 5v dc/dc converter.
 Mexicaanse ledponcho met Sombrero
 Hardware:
 - 1 Arduino Nano
-- 1 ledstring voor de hoed
-- 1 ledstring voor de poncho
+- 1 ledstrings voor de hoed
+- ? ledstrings voor de poncho
 ledstrings doorverbonden (battery->poncho->sombrero)
