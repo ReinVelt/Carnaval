@@ -2,15 +2,14 @@
 Some special led effects for de carnavalsvereniging 
 
 ## Belangrijk
-De leds werken op 5V (DUS NIET OP 12)
-Altijd +- goed aansluiten...anders rook!!!
+**De leds werken op 5V (DUS NIET OP 12) Altijd +/- goed aansluiten...anders rook!!!**
 
 ## Aansluiten
-In alle gevallen zijn de verbindingen dus de leds en de microcontroller alsvolgt:
+In alle gevallen zijn de verbindingen tussen leds en de microcontroller alsvolgt:
 
-- Led rood = 5V           <--> Arduino pin 5V
-- led wit = GND           <--> Arduino pin GND 
-- led groen/grijs = DATA  <--> Arduino pin D6
+- Led **rood** = 5V           <--> Arduino pin 5V
+- led **wit** = GND           <--> Arduino pin GND 
+- led **groen/grijs** = DATA  <--> Arduino pin D6
 
 ## Software
 Alles is geschreven met behulp van de Arduino ontwikkelomgeving (http:www.arduino.cc). 
